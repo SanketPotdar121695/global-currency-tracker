@@ -1,13 +1,8 @@
 import './App.css';
+import AllRoutes from './pages/AllRoutes';
 
 function App() {
-  return (
-    <>
-      <div>
-        <h1>Hello World</h1>
-      </div>
-    </>
-  );
+  return <AllRoutes />;
 }
 
 export default App;
