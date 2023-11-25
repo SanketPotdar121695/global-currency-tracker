@@ -1,0 +1,17 @@
+.container {
+  width: 20%;
+  margin-inline: auto;
+  padding: 20px;
+  display: inline;
+  border-radius: 10px;
+  transition: 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container:hover {
+  transform: scale(1.1);
+}
+
+.container > h3 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
