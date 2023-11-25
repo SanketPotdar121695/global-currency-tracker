@@ -1,19 +1,33 @@
 import React from 'react';
-import DOMPurify from 'dompurify';
 
-const CountryList = () => {
+export const CountryList = () => {
   const [query, setQuery] = React.useState('');
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [countries, setCountries] = React.useState([]);
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Oops! Something went wrong!</h1>;
+  const fetchCountries = () => {
+    setLoading(true);
+    fetch(`v3.1/currency/${query}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCountries(data);
+        setLoading(false);
+        setError(false);
+      })
+      .catch((err) => setError(true));
+  };
 
   const handleQueryChange = (e) => {
-    let cleanQuery = DOMPurify.sanitize(e.target.value);
-    setQuery(cleanQuery);
+    setQuery(e.target.value);
   };
+
+  React.useEffect(() => {
+    query && fetchCountries();
+  }, [query]);
+
+  if (loading) return <h1>Loading...</h1>;
+  if (error) return <h1>Oops! Something went wrong!</h1>;
 
   return (
     <div>
@@ -29,5 +43,3 @@ const CountryList = () => {
     </div>
   );
 };
-
-export default CountryList;
