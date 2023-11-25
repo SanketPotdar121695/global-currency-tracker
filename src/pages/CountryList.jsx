@@ -69,29 +69,40 @@ const CountryList = () => {
         </div>
 
         {loading ? (
-          <h1>Loading...</h1>
+          <h1 style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}>
+            Loading...
+          </h1>
         ) : error ? (
-          <h1>Oops! Something went wrong!</h1>
-        ) : (
-          query.length > 0 && (
-            <div>
-              <div className={Styles.container}>
-                {filteredCountries?.length > 0 &&
-                  filteredCountries.map((country, i) => (
-                    <CountryCard key={i} id={i} {...country} />
-                  ))}
-              </div>
-
-              {countries?.length > limit && (
-                <Pagination
-                  perPage={limit}
-                  activePage={activePage}
-                  handlePageChange={setActivePage}
-                  countriesLength={countries?.length}
-                />
-              )}
+          <h1
+            style={{
+              color: 'tomato',
+              fontFamily: 'Verdana, Geneva, Tahoma, sans-serif'
+            }}
+          >
+            Invalid currency: Cannot
+          </h1>
+        ) : query.length > 0 ? (
+          <div>
+            <div className={Styles.container}>
+              {filteredCountries?.length > 0 &&
+                filteredCountries.map((country, i) => (
+                  <CountryCard key={i} id={i} {...country} />
+                ))}
             </div>
-          )
+
+            {countries?.length > limit && (
+              <Pagination
+                perPage={limit}
+                activePage={activePage}
+                handlePageChange={setActivePage}
+                countriesLength={countries?.length}
+              />
+            )}
+          </div>
+        ) : (
+          <div className={Styles.welcome}>
+            <h2>Welcome to the Global Currency Tracker !!!</h2>
+          </div>
         )}
       </div>
     </>

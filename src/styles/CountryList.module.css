@@ -26,6 +26,29 @@
   font-style: italic;
 }
 
+.welcome {
+  margin-top: 100px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: oblique;
+  padding: 10px;
+}
+
+.welcome > h2 {
+  background: linear-gradient(
+    to right,
+    #672aeb 20%,
+    #fa7000 30%,
+    #0190cd 70%,
+    #764ada 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
+}
+
 .parentContainer > div > h1 {
   display: inline;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -37,6 +60,15 @@
 
 .parentContainer > div {
   padding: 20px;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 
 @media all and (max-width: 768px) {
@@ -51,6 +83,10 @@
 
   .parentContainer > div > h1 {
     font-size: 25px;
+  }
+
+  .welcome > h2 {
+    font-size: 20px;
   }
 }
 
