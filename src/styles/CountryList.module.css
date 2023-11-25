@@ -1,0 +1,40 @@
+.container {
+  width: 80%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 50px;
+}
+
+.parentContainer {
+  padding: 10px 5px;
+  padding-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.parentContainer > input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  width: 40%;
+}
+
+.parentContainer > input::placeholder {
+  font-style: italic;
+}
+
+.parentContainer > div > h1 {
+  display: inline;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  cursor: pointer;
+}
+
+.parentContainer > div {
+  padding: 20px;
+}
