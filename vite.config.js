@@ -9,6 +9,7 @@ export default defineConfig((mode) => {
     server: {
       proxy: {
         '/v3.1': {
+          rewrite: (path) => path.replace(/^\/v3.1/, ''),
           target: process.env.VITE_baseURL,
           changeOrigin: true,
           secure: false
