@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-inline: 20px;
+  padding-bottom: 20px;
+}
+
+.container > button {
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background: #f6bda5;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.container > button:hover {
+  background: #c69174;
+}
+
+.activePage {
+  font-weight: bold;
+  cursor: not-allowed !important;
+  background: #fd6547 !important;
+  color: white;
+}
