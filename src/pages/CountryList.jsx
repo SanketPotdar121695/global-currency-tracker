@@ -24,15 +24,21 @@ const CountryList = () => {
     setLoading(true);
     try {
       let res = await fetch(`v3.1/currency/${debouncedQuery}`);
-      res = res.text();
+      res = await res.text();
 
       let secureData = sjson.parse(res, {
         constructorAction: 'remove',
         protoAction: 'remove'
       });
 
-      setCountries(secureData);
-      setLoading(false);
+      if (secureData.status === 404) {
+        console.log(secureData.message);
+        setLoading(false);
+        setError(true);
+      } else {
+        setCountries(secureData);
+        setLoading(false);
+      }
     } catch (err) {
       console.log(err.message);
       setLoading(false);
@@ -49,8 +55,6 @@ const CountryList = () => {
     let cleanQuery = DOMPurify.sanitize(e.target.value);
     setQuery(cleanQuery.toUpperCase());
   };
-
-  console.log(error);
 
   React.useEffect(() => {
     query && fetchCountries();
