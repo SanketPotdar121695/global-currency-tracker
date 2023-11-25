@@ -1,14 +1,17 @@
 import React from 'react';
+import { useDebounce } from '../hooks/useDebounce';
+import { CountryCard } from '../components/CountryCard';
 
 export const CountryList = () => {
   const [query, setQuery] = React.useState('');
   const [error, setError] = React.useState(false);
+  const debouncedQuery = useDebounce(query, 1000);
   const [loading, setLoading] = React.useState(false);
   const [countries, setCountries] = React.useState([]);
 
   const fetchCountries = () => {
     setLoading(true);
-    fetch(`v3.1/currency/${query}`)
+    fetch(`v3.1/currency/${debouncedQuery}`)
       .then((res) => res.json())
       .then((data) => {
         setCountries(data);
@@ -24,7 +27,7 @@ export const CountryList = () => {
 
   React.useEffect(() => {
     query && fetchCountries();
-  }, [query]);
+  }, [debouncedQuery]);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Oops! Something went wrong!</h1>;
