@@ -17,7 +17,7 @@ const CountryList = () => {
   const fetchCountries = () => {
     setLoading(true);
     fetch(`v3.1/currency/${debouncedQuery}`)
-      .then((res) => res.json())
+      .then((res) => res.text())
       .then((data) => {
         let secureData = sjson.parse(data, {
           constructorAction: 'remove',
@@ -27,7 +27,11 @@ const CountryList = () => {
         setLoading(false);
         setError(false);
       })
-      .catch((err) => setError(true));
+      .catch((err) => {
+        console.log(err.message);
+        setLoading(false);
+        setError(true);
+      });
   };
 
   const handleQueryChange = (e) => {
@@ -39,21 +43,27 @@ const CountryList = () => {
     query && fetchCountries();
   }, [debouncedQuery]);
 
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Oops! Something went wrong!</h1>;
+  console.log(error);
 
   return (
-    <div>
-      <h1>Global Currency Tracker</h1>
-      <input
-        type='text'
-        value={query}
-        placeholder='Enter currency of your choice'
-        onChange={handleQueryChange}
-      />
+    <>
+      <div>
+        <h1>Global Currency Tracker</h1>
 
-      {/* Map the countries here and show them in the form of cards - Pending */}
-    </div>
+        <input
+          type='text'
+          value={query}
+          placeholder='Enter currency of your choice'
+          onChange={handleQueryChange}
+        />
+
+        {loading && <h1>Loading...</h1>}
+        {error && <h1>Oops! Something went wrong!</h1>}
+
+        {countries?.length > 0 &&
+          countries.map((country, i) => <CountryCard key={i} {...country} />)}
+      </div>
+    </>
   );
 };
 
