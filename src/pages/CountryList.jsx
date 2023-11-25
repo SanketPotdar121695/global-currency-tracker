@@ -37,6 +37,7 @@ const CountryList = () => {
         setError(true);
       } else {
         setCountries(secureData);
+        setError(false);
         setLoading(false);
       }
     } catch (err) {
