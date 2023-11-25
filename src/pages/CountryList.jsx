@@ -22,7 +22,7 @@ const CountryList = () => {
 
   const fetchCountries = () => {
     setLoading(true);
-    fetch(`${baseURL}/v3.1/currency/${debouncedQuery}`)
+    fetch(`v3.1/currency/${debouncedQuery}`)
       .then((res) => res.text())
       .then((data) => {
         let secureData = sjson.parse(data, {
