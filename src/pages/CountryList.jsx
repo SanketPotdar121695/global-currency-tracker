@@ -73,14 +73,14 @@ const CountryList = () => {
             Loading...
           </h1>
         ) : error ? (
-          <h1
+          <h3
             style={{
               color: 'tomato',
               fontFamily: 'Verdana, Geneva, Tahoma, sans-serif'
             }}
           >
-            Invalid currency: Cannot
-          </h1>
+            Error: Invalid currency! Cannot find any country for the currency.
+          </h3>
         ) : query.length > 0 ? (
           <div>
             <div className={Styles.container}>

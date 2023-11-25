@@ -52,7 +52,7 @@
 .parentContainer > div > h1 {
   display: inline;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+  background: linear-gradient(to right, #f321ad, #ff4f4f, #bdb01f, #ee5544);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   cursor: pointer;
