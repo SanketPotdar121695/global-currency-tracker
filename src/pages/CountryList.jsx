@@ -1,4 +1,6 @@
 import React from 'react';
+import DOMPurify from 'dompurify';
+import sjson from 'secure-json-parse';
 import { useDebounce } from '../hooks/useDebounce';
 import CountryCard from '../components/CountryCard';
 
@@ -17,7 +19,11 @@ const CountryList = () => {
     fetch(`v3.1/currency/${debouncedQuery}`)
       .then((res) => res.json())
       .then((data) => {
-        setCountries(data);
+        let secureData = sjson.parse(data, {
+          constructorAction: 'remove',
+          protoAction: 'remove'
+        });
+        setCountries(secureData);
         setLoading(false);
         setError(false);
       })
@@ -25,7 +31,8 @@ const CountryList = () => {
   };
 
   const handleQueryChange = (e) => {
-    setQuery(e.target.value);
+    let cleanQuery = DOMPurify.sanitize(e.target.value);
+    setQuery(cleanQuery);
   };
 
   React.useEffect(() => {
