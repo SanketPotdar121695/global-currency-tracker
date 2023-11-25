@@ -38,3 +38,32 @@
 .parentContainer > div {
   padding: 20px;
 }
+
+@media all and (max-width: 768px) {
+  .container {
+    gap: 50px;
+    padding-inline: none;
+  }
+
+  .parentContainer > input {
+    width: 50%;
+  }
+
+  .parentContainer > div > h1 {
+    font-size: 25px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .container {
+    width: 60%;
+  }
+
+  .parentContainer > div > h1 {
+    font-size: 20px;
+  }
+
+  .parentContainer > input {
+    width: 60%;
+  }
+}

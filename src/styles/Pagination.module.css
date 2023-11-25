@@ -28,3 +28,10 @@
   background: #fd6547 !important;
   color: white;
 }
+
+@media all and (max-width: 480px) {
+  .container > button {
+    padding: 5px 10px;
+    font-size: small;
+  }
+}
