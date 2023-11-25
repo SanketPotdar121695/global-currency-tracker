@@ -1,5 +1,5 @@
 import React from 'react';
-import { CountryList } from './CountryList';
+import CountryList from './CountryList';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 const AllRoutes = () => {

@@ -1,13 +1,16 @@
 import React from 'react';
 import { useDebounce } from '../hooks/useDebounce';
-import { CountryCard } from '../components/CountryCard';
+import CountryCard from '../components/CountryCard';
 
-export const CountryList = () => {
+const CountryList = () => {
+  let delay = 2000;
+
   const [query, setQuery] = React.useState('');
   const [error, setError] = React.useState(false);
-  const debouncedQuery = useDebounce(query, 1000);
   const [loading, setLoading] = React.useState(false);
   const [countries, setCountries] = React.useState([]);
+
+  const debouncedQuery = useDebounce(query, delay);
 
   const fetchCountries = () => {
     setLoading(true);
@@ -46,3 +49,5 @@ export const CountryList = () => {
     </div>
   );
 };
+
+export default CountryList;

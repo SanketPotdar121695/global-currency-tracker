@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const CountryCard = () => {
+const CountryCard = () => {
   return (
     <div>
       <img src='' alt='' />
@@ -9,3 +9,4 @@ export const CountryCard = () => {
   );
 };
 
+export default React.memo(CountryCard);
