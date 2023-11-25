@@ -1,5 +1,6 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
+import Loader from '../utils/Loader';
 import sjson from 'secure-json-parse';
 import { useDebounce } from '../hooks/useDebounce';
 import Pagination from '../components/Pagination';
@@ -15,38 +16,41 @@ const CountryList = () => {
 
   let limit = 9;
   let delay = 2000;
-  let baseURL = import.meta.env.VITE_baseURL;
   let endingIndex = activePage * limit - 1;
   let startingIndex = (activePage - 1) * limit;
   const debouncedQuery = useDebounce(query, delay).toLowerCase();
 
-  const fetchCountries = () => {
+  const fetchCountries = async () => {
     setLoading(true);
-    fetch(`v3.1/currency/${debouncedQuery}`)
-      .then((res) => res.text())
-      .then((data) => {
-        let secureData = sjson.parse(data, {
-          constructorAction: 'remove',
-          protoAction: 'remove'
-        });
-        setCountries(secureData);
-        setLoading(false);
-        setError(false);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setLoading(false);
-        setError(true);
+    try {
+      let res = await fetch(`v3.1/currency/${debouncedQuery}`);
+      res = res.text();
+
+      let secureData = sjson.parse(res, {
+        constructorAction: 'remove',
+        protoAction: 'remove'
       });
+
+      setCountries(secureData);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.message);
+      setLoading(false);
+      setError(true);
+    }
   };
 
   const filteredCountries =
-    countries.slice(startingIndex, endingIndex + 1) || [];
+    countries.length > 0
+      ? countries?.slice(startingIndex, endingIndex + 1)
+      : [];
 
   const handleQueryChange = (e) => {
     let cleanQuery = DOMPurify.sanitize(e.target.value);
     setQuery(cleanQuery.toUpperCase());
   };
+
+  console.log(error);
 
   React.useEffect(() => {
     query && fetchCountries();
@@ -69,18 +73,18 @@ const CountryList = () => {
         </div>
 
         {loading ? (
-          <h1 style={{ fontFamily: 'Verdana, Geneva, Tahoma, sans-serif' }}>
-            Loading...
-          </h1>
+          <Loader />
         ) : error ? (
-          <h3
-            style={{
-              color: 'tomato',
-              fontFamily: 'Verdana, Geneva, Tahoma, sans-serif'
-            }}
-          >
-            Error: Invalid currency! Cannot find any country for the currency.
-          </h3>
+          <div style={{ padding: '10px', marginTop: '50px' }}>
+            <h3
+              style={{
+                color: 'tomato',
+                fontFamily: 'Verdana, Geneva, Tahoma, sans-serif'
+              }}
+            >
+              Error: Invalid currency! Cannot find any country for the currency.
+            </h3>
+          </div>
         ) : query.length > 0 ? (
           <div>
             <div className={Styles.container}>
