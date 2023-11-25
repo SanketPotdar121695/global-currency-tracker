@@ -2,16 +2,20 @@ import React from 'react';
 import DOMPurify from 'dompurify';
 import sjson from 'secure-json-parse';
 import { useDebounce } from '../hooks/useDebounce';
+import Pagination from '../components/Pagination';
 import CountryCard from '../components/CountryCard';
 
 const CountryList = () => {
-  let delay = 2000;
-
   const [query, setQuery] = React.useState('');
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [countries, setCountries] = React.useState([]);
+  const [activePage, setActivePage] = React.useState(1);
 
+  let limit = 9;
+  let delay = 2000;
+  let endingIndex = activePage * limit - 1;
+  let startingIndex = (activePage - 1) * limit;
   const debouncedQuery = useDebounce(query, delay);
 
   const fetchCountries = () => {
@@ -28,11 +32,12 @@ const CountryList = () => {
         setError(false);
       })
       .catch((err) => {
-        console.log(err.message);
         setLoading(false);
         setError(true);
       });
   };
+
+  const filteredCountries = countries.slice(startingIndex, endingIndex + 1);
 
   const handleQueryChange = (e) => {
     let cleanQuery = DOMPurify.sanitize(e.target.value);
@@ -42,8 +47,6 @@ const CountryList = () => {
   React.useEffect(() => {
     query && fetchCountries();
   }, [debouncedQuery]);
-
-  console.log(error);
 
   return (
     <>
@@ -60,8 +63,19 @@ const CountryList = () => {
         {loading && <h1>Loading...</h1>}
         {error && <h1>Oops! Something went wrong!</h1>}
 
-        {countries?.length > 0 &&
-          countries.map((country, i) => <CountryCard key={i} {...country} />)}
+        {filteredCountries?.length > 0 &&
+          filteredCountries.map((country, i) => (
+            <CountryCard key={i} id={i} {...country} />
+          ))}
+
+        {countries?.length > limit && (
+          <Pagination
+            perPage={limit}
+            activePage={activePage}
+            handlePageChange={setActivePage}
+            countriesLength={countries?.length}
+          />
+        )}
       </div>
     </>
   );

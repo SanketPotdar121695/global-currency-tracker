@@ -1,10 +1,10 @@
 import React from 'react';
 
-const CountryCard = () => {
+const CountryCard = ({ id }) => {
   return (
     <div>
       <img src='' alt='' />
-      <h3></h3>
+      <h3>hello {id}</h3>
     </div>
   );
 };
