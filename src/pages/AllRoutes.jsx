@@ -1,4 +1,3 @@
-import React from 'react';
 import CountryList from './CountryList';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
