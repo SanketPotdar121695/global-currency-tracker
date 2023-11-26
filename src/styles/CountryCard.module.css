@@ -1,8 +1,11 @@
 .container {
   width: 20%;
-  margin-inline: auto;
   padding: 20px;
-  display: inline;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-between;
   border-radius: 10px;
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -16,14 +19,38 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.container > img {
+  width: 100%;
+  height: auto;
+  align-self: stretch;
+}
+
+.info {
+  text-align: start;
+  font-size: 14px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.info > h3,
+.info > p {
+  margin-block: 10px;
+  padding: 0;
+}
+
+.info > p {
+  color: #4c4c4c;
+}
+
 @media all and (max-width: 768px) {
   .container {
-    width: 30%;
+    width: 35%;
   }
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 570px) {
   .container {
     width: 80%;
+    margin-inline: auto;
   }
 }

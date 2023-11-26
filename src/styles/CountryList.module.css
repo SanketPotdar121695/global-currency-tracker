@@ -2,9 +2,9 @@
   width: 80%;
   margin-inline: auto;
   display: flex;
-  justify-content: center;
-  align-items: stretch;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
   gap: 30px;
   padding: 50px;
 }
@@ -15,22 +15,36 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.errorMessage {
+  color: tomato;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+}
+
 .parentContainer > input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid;
   width: 40%;
+  font-weight: bold;
 }
 
 .parentContainer > input::placeholder {
   font-style: italic;
+  font-weight: normal;
 }
 
 .welcome {
-  margin-top: 100px;
+  margin-top: 20px;
+  padding: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-style: oblique;
-  padding: 10px;
+}
+
+.welcome > div {
+  width: 50%;
+  margin: auto;
+  text-align: justify;
 }
 
 .welcome > h2 {
@@ -41,12 +55,19 @@
     #0190cd 70%,
     #764ada 80%
   );
+  margin-bottom: 50px;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-fill-color: transparent;
   background-size: 500% auto;
   animation: textShine 5s ease-in-out infinite alternate;
+}
+
+.welcome > div > h4 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: 25px;
 }
 
 .parentContainer > div > h1 {
@@ -88,11 +109,16 @@
   .welcome > h2 {
     font-size: 20px;
   }
+
+  .welcome > div {
+    width: 70%;
+  }
 }
 
 @media all and (max-width: 480px) {
   .container {
-    width: 60%;
+    width: 80%;
+    padding: 30px;
   }
 
   .parentContainer > div > h1 {
@@ -101,5 +127,30 @@
 
   .parentContainer > input {
     width: 60%;
+  }
+
+  .welcome {
+    margin-top: 0;
+  }
+
+  .welcome > div {
+    width: 80%;
+  }
+
+  .welcome > h2 {
+    margin-bottom: 30px;
+  }
+
+  .welcome > h3 {
+    font-size: 14px;
+  }
+
+  .welcome > div > h4 {
+    font-size: 14px;
+  }
+
+  .errorMessage {
+    font-size: 12px;
+    line-height: 20px;
   }
 }

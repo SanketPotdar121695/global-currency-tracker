@@ -81,12 +81,7 @@ const CountryList = () => {
           <Loader />
         ) : error ? (
           <div style={{ padding: '10px', marginTop: '50px' }}>
-            <h3
-              style={{
-                color: 'tomato',
-                fontFamily: 'Verdana, Geneva, Tahoma, sans-serif'
-              }}
-            >
+            <h3 className={Styles.errorMessage}>
               Error: Invalid currency! Cannot find any country for the currency.
             </h3>
           </div>
@@ -111,6 +106,29 @@ const CountryList = () => {
         ) : (
           <div className={Styles.welcome}>
             <h2>Welcome to the Global Currency Tracker !!!</h2>
+            <h3>Unveil the World's Diversity with a Click!</h3>
+
+            <div>
+              <h4>
+                🌍 Ever wondered which countries share the same currency?
+                Explore the globe effortlessly and find the nations associated
+                with your preferred currency. Whether you're a traveler, a
+                curious mind, or just love discovering new places, Global
+                Currency Tracker is your passport to global currency insights.
+              </h4>
+
+              <h4>
+                🔍 Enter a currency and embark on a journey to unveil the
+                countries that embrace the same monetary unit. From bustling
+                metropolises to hidden gems, our app is your gateway to a world
+                of diverse cultures, landscapes, and histories.
+              </h4>
+
+              <h4>
+                🌐 Ready to discover the international tapestry woven by
+                currencies? Let's get started! Happy exploring!
+              </h4>
+            </div>
           </div>
         )}
       </div>
