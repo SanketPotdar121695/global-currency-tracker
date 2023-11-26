@@ -111,7 +111,7 @@ http://frontend_url:port/v3.1/currency/dollar
   <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/998cdebf-5c7b-47fd-9fcb-766efbb91e69" alt="homepage_tablet_portrait" width="400">
   <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/1f007c6e-66fc-47d9-a823-638a874ec605" alt="search_results_tablet_portrait" width="400">
   
-  <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/2e0c5db5-9f05-4553-a44f-467a62f106b7" alt="pagination_tablet_portrait" width="700">
+  <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/2e0c5db5-9f05-4553-a44f-467a62f106b7" alt="pagination_tablet_portrait" width="400">
 </div>
 
 <div align="center">
@@ -119,7 +119,7 @@ http://frontend_url:port/v3.1/currency/dollar
   <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/f791a9d3-a3d5-41f9-912a-f93d48b3ac48" alt="homepage_mobile" width="400">
   <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/c11d8d1f-f29f-480b-b094-2676361ebcce" alt="search_results_mobile" width="400">
   
-  <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/17538c68-68d4-41da-a01c-06dc0975a49c" alt="pagination_tablet_mobile" width="700">
+  <img src="https://github.com/SanketPotdar121695/global-currency-tracker/assets/107460815/17538c68-68d4-41da-a01c-06dc0975a49c" alt="pagination_tablet_mobile" width="400">
 </div>
 
 ## Demo
